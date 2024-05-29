@@ -23,6 +23,7 @@ const displayEl =  document.querySelector('.display')
 
 
 /*-------------------------------- Functions --------------------------------*/
+//used to update the content to display
 const updateResult = () => {    
     if (operator === undefined) {
         results = num1
@@ -40,19 +41,20 @@ const updateEquals = (event) => {
     calculate(num1, num2, operator)
     updateResult()
 }
+//used to update what the calculater shows
 const render = () => {
     displayEl.textContent = results
 }
 
 const updateOperator = (event) => {    
     operator = event.target.textContent
-    console.log(operator)
+    
     
     
 }
 
 const UpdateNumbers = (event) => {
-    console.log(event.target.textContent)
+    
     if (!num1 && operator === undefined) {
         num1 = event.target.textContent
     } else if (operator === undefined) {
@@ -67,7 +69,7 @@ const UpdateNumbers = (event) => {
 }
 
 
-
+//creating simple helper functions to use anywhere
 const add = (num1, num2) => {
     total = Number(num1) + Number(num2) 
     
@@ -75,19 +77,19 @@ const add = (num1, num2) => {
 
 const subtract = (num1, num2) => {
     total = Number(num1) - Number(num2)
-    console.log(total)
+    
 }
 
 const multiply = (num1, num2) => {
     total = Number(num1) * Number(num2)
-    console.log(total)
+    
 }
 
 const divide = (num1, num2) => {
     total = Number(num1) / Number(num2)
-    console.log(total)
+    
 }
-
+//main calculation function used to find the operator and then run the corresponding helper function 
 const calculate = (num1, num2, operator) => {
     if (operator === '+') {       
         add(num1, num2)
@@ -99,6 +101,9 @@ const calculate = (num1, num2, operator) => {
         divide(num1, num2)
     } 
 }
+
+//this was the only way I could figure out how to get everything to clear and reset
+
 const updateClear = (event) => {
    clear = event.target.textContent 
    reset()
@@ -117,7 +122,7 @@ const reset = () => {
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+//using forEach to accees each elelment with the right class to avoid repeating code
 numberBtnEls.forEach((numberBtnEl) => {
     numberBtnEl.addEventListener('click', UpdateNumbers)
 })
@@ -130,20 +135,3 @@ operatorBtnEls.forEach((operatorBtnEl) => {
 })
 
 equalBtnEls.addEventListener('click', updateEquals)
-/*handler function used to set left side operator and right side of arguments
-
-when numbers start getting clicked:
-    capture & display input for first number using variable (firstNumber)
-
-when operator is clicked:
-    capture operator in variable (operator)  
-    remove listener for number 1 and turn on number 2
-    try and turn off for oporators other than c or =
-when second numbers are being clicked:
-
-    capture & display number 2 using variable (secondNumber) diff then first number 
-
-use if else with switch case to get the correct maths function
-
-show total when = is clicked
-*/
