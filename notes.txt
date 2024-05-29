@@ -1,0 +1,61 @@
+As a user, I want to be able to select numbers so that I can perform operations with them.
+As a user, I want to be able to add two numbers together.
+As a user, I want to be able to subtract one number from another.
+As a user, I want to be able to multiply two numbers together.
+As a user, I want to be able to divide one number by another.
+As a user, I want to be able to see the output of the mathematical operation.
+As a user, I want to be able to clear all operations and start from 0.
+
+
+
+constants ? complex data [] {}
+variables
+    TBD
+    num1 = Number(button txt)
+    num2 = Number(button txt)
+    operator - 
+    result
+
+DOM Elements - 
+    buttons
+       div.number
+        div.operator
+        div.equals
+    results - display
+
+event handler  -
+    click handler for each group of elements
+
+
+const numberBtnEls = document.queryuSelectorAll('.number')
+const operatorBtnEls = document.queryuSelectorAll('.operator')
+const equalBtnEls = document.queryuSelector('.equals')
+const displayEl =  document.querySelector('.display')
+
+numberBtnEls.forEach((numberBtnEls) => {
+    numberBtnEl.addEventListener('click', UpdateNumbers)
+})
+const updateResult = () => {
+    result = num1
+    render()   
+}
+
+
+const render = () => {
+    display.textContent = result
+}
+
+const UpdateNumbers = (event) => {
+    console.log(event.target.textContent)
+    if(!num1) {
+        num1 = evennt.target.textContent
+    }
+    num1 += event.target.textContent
+    updateResult()
+}
+
+check what the status of operator is
+if it is undefined update num1 if defined update num2
+
+iterater over all operators
+assign listener (updateOperator)
